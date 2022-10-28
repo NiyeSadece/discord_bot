@@ -34,6 +34,26 @@ class UpdateExp(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class SubExp(APIView):
+    def post(self, request, formate=None):
+        serializer = DiscordUserSerializer(data=request.data)
+
+        if serializer.is_valid():
+            name = serializer.validated_data['name']
+            dcid = serializer.validated_data['discord_id']
+            exp = serializer.validated_data['exp']
+
+            if DiscordUser.objects.filter(discord_id=dcid).exists():
+                serializer = DiscordUser.objects.get(discord_id=dcid)
+                serializer.name = name
+                serializer.exp = F('exp') - exp
+
+            serializer.save()
+            return Response(None, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 class UpdateLvl(APIView):
     def post(self, request, formate=None):
         serializer = DiscordUserSerializer(data=request.data)
@@ -48,6 +68,7 @@ class UpdateLvl(APIView):
             serializer.save()
             return Response(None, status=status.HTTP_201_CREATED)
 
+        print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

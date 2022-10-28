@@ -12,3 +12,5 @@ class DiscordUserSerializer(serializers.ModelSerializer):
             'exp',
             'lvl',
         ]
+        extra_kwargs = {'name': {'required': False}}
+

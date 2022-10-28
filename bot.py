@@ -32,6 +32,13 @@ def update_exp(name, dcid, exp):
     return
 
 
+def sub_exp(name, dcid, exp):
+    url = 'http://127.0.0.1:8000/api/exp/sub/'
+    new_exp = {'name': name, 'discord_id': dcid, 'exp': exp}
+    x = requests.post(url, data=new_exp)
+    return
+
+
 def update_lvl(dcid):
     url = 'http://127.0.0.1:8000/api/lvl/update/'
     new_lvl = {'discord_id': dcid}
@@ -120,7 +127,7 @@ async def rank(ctx: commands.Context):
     ranking = get_ranking()
     for item in ranking:
         try:
-            embed.add_field(name=f"{rank}.", value=f"<@{item}>")
+            embed.add_field(name=f"{rank}.", value=f"<@{item['discord_id']}>")
             rank += 1
         except MemberNotFound:
             continue
@@ -146,7 +153,7 @@ async def addxp(ctx: commands.Context, xp, member: discord.Member = None):
 @app_commands.guilds(discord.Object(id=534491377283629056))
 async def subxp(ctx: commands.Context, xp, member: discord.Member = None):
     member = ctx.author if not member else member
-    update_exp(member.display_name, member.id, -xp)
+    sub_exp(member.display_name, member.id, xp)
     await ctx.send(f"Użytkownik {member} utracił {xp} punktów kreatywności!")
 
 
