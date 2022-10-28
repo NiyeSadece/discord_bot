@@ -31,21 +31,25 @@ def update_exp(name, dcid, exp):
     x = requests.post(url, data=new_exp)
     return
 
+
 def update_lvl(dcid):
     url = 'http://127.0.0.1:8000/api/lvl/update/'
     new_lvl = {'discord_id': dcid}
     x = requests.post(url, data=new_lvl)
     return
 
+
 def get_user(dsid):
     response = requests.get(f"http://127.0.0.1:8000/api/{dsid}/")
     json_data = json.loads(response.text)
     return json_data
 
+
 def get_ranking():
     response = requests.get("http://127.0.0.1:8000/api/ranking/")
     json_data = json.loads(response.text)
     return json_data
+
 
 def set_user_active(dcid):
     url = 'http://127.0.0.1:8000/api/user/active/'
@@ -53,11 +57,13 @@ def set_user_active(dcid):
     x = requests.post(url, data=now_active)
     return
 
+
 def set_user_inactive(dcid):
     url = 'http://127.0.0.1:8000/api/user/inactive/'
     now_inactive = {'discord_id': dcid}
     x = requests.post(url, data=now_inactive)
     return
+
 
 def lvl_up(author_id):
     user = get_user(author_id)
@@ -101,9 +107,9 @@ async def lvl(ctx: commands.Context, member: discord.Member = None):
 
 
 # showing ranking
-@client.hybrid_command(name="lvl", with_app_command=True, description="Sprawdź poziom kreatywności", pass_context=True)
+@client.hybrid_command(name="rank", with_app_command=True, description="Sprawdź poziom kreatywności", pass_context=True)
 @app_commands.guilds(discord.Object(id=534491377283629056))
-async def lvl(ctx: commands.Context):
+async def rank(ctx: commands.Context):
     await ctx.defer()
     rank = 1
     embed = discord.Embed(
@@ -122,7 +128,7 @@ async def lvl(ctx: commands.Context):
 
 
 # manually adding exp
-@client.hybrid_command(name="lvl", with_app_command=True, description="Sprawdź poziom kreatywności", pass_context=True)
+@client.command(pass_context=True)
 @app_commands.guilds(discord.Object(id=534491377283629056))
 async def addxp(ctx: commands.Context, xp, member: discord.Member = None):
     member = ctx.author if not member else member
@@ -136,7 +142,7 @@ async def addxp(ctx: commands.Context, xp, member: discord.Member = None):
         #     f"No genialny jesteś {message.author.mention}, osiągnąłeś {user['lvl']} level, Ty kreatywna bestio! Oby tak dalej, a dostaniesz wspaniałe nagrody!")
 
 # manually subtracting exp
-@client.hybrid_command(name="lvl", with_app_command=True, description="Sprawdź poziom kreatywności", pass_context=True)
+@client.command(pass_context=True)
 @app_commands.guilds(discord.Object(id=534491377283629056))
 async def subxp(ctx: commands.Context, xp, member: discord.Member = None):
     member = ctx.author if not member else member
@@ -145,7 +151,7 @@ async def subxp(ctx: commands.Context, xp, member: discord.Member = None):
 
 
 # setting user active, so they do show up in the ranking
-@client.hybrid_command(name="lvl", with_app_command=True, description="Sprawdź poziom kreatywności", pass_context=True)
+@client.command(pass_context=True)
 @app_commands.guilds(discord.Object(id=534491377283629056))
 async def active(ctx: commands.Context, member: discord.Member = None):
     member = ctx.author if not member else member
@@ -154,12 +160,13 @@ async def active(ctx: commands.Context, member: discord.Member = None):
 
 
 # setting user inactive, so they don't show up in the ranking
-@client.hybrid_command(name="lvl", with_app_command=True, description="Sprawdź poziom kreatywności", pass_context=True)
+@client.command(pass_context=True)
 @app_commands.guilds(discord.Object(id=534491377283629056))
 async def inactive(ctx: commands.Context, member: discord.Member = None):
     member = ctx.author if not member else member
     set_user_inactive(member.id)
     await ctx.send(f"Użytkownik {member} został ustawiony jako nieaktywny i nie będzie pokazywać się w rankingu!")
+
 
 @client.event
 async def on_ready():

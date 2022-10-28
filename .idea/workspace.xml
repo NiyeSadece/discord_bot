@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6b9da82-93d9-4f93-b5b0-273145171e0e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/zoya/zoya_site/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord_bot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord_bot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zoya/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/zoya/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zoya/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/zoya/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zoya/zoya_site/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/zoya/zoya_site/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zoya/zoya_site/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/zoya/zoya_site/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zoya/zoya_site/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/zoya/zoya_site/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zoya/zoya_site/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/zoya/zoya_site/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="a6b9da82-93d9-4f93-b5b0-273145171e0e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -118,7 +106,7 @@
       <workItem from="1665192310848" duration="869000" />
       <workItem from="1665193199450" duration="19106000" />
       <workItem from="1665507078953" duration="1858000" />
-      <workItem from="1666912507350" duration="12039000" />
+      <workItem from="1666912507350" duration="12605000" />
     </task>
     <servers />
   </component>
